@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Eventos Educativos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+</head>
+<body>
+    <div class="container">
+        <!-- Toast Notification -->
+        <div id="toast" class="toast hidden">
+            <div class="toast-content">
+                <i id="toast-icon" class="fas fa-check-circle"></i>
+                <span id="toast-message">Operación exitosa</span>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <h1>Gestión de Eventos Educativos</h1>
+            <p>Sistema para registrar y administrar eventos, ubicaciones y contactos</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <div class="tabs-container">
+            <button id="events-tab" class="tab-button active-tab" onclick="showTab('events')">
+                <i class="fas fa-calendar-alt"></i>Eventos
+            </button>
+            <button id="locations-tab" class="tab-button" onclick="showTab('locations')">
+                <i class="fas fa-map-marker-alt"></i>Ubicaciones
+            </button>
+            <button id="contacts-tab" class="tab-button" onclick="showTab('contacts')">
+                <i class="fas fa-address-book"></i>Contactos
+            </button>
+        </div>
+
+        <!-- Events Section -->
+        <div id="events-section" class="tab-content">
+            <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-semibold text-gray-800">Gestión de Eventos</h2>
+    <div class="flex gap-2">
+        <button onclick="exportEventsToCSV()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center">
+            <i class="fas fa-file-export mr-2"></i>Exportar
+        </button>
+        <button onclick="toggleEventForm()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center">
+            <i class="fas fa-plus mr-2"></i>Nuevo Evento
+        </button>
+    </div>
+</div>
+        </div>
+
+        <!-- Locations Section -->
+        <div id="locations-section" class="tab-content hidden">
+            <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-semibold text-gray-800">Gestión de Ubicaciones</h2>
+    <div class="flex gap-2">
+        <button onclick="showAllLocationsOnMap()" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg flex items-center">
+            <i class="fas fa-map-marked-alt mr-2"></i>Ver Mapa
+        </button>
+        <button onclick="toggleLocationForm()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center">
+            <i class="fas fa-plus mr-2"></i>Nueva Ubicación
+        </button>
+    </div>
+</div>
+        </div>
+
+        <!-- Contacts Section -->
+        <div id="contacts-section" class="tab-content hidden">
+            <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-semibold text-gray-800">Gestión de Contactos</h2>
+    <div class="flex gap-2">
+        <button onclick="generateContactReport()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg flex items-center">
+            <i class="fas fa-file-pdf mr-2"></i>Reporte
+        </button>
+        <button onclick="toggleContactForm()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center">
+            <i class="fas fa-plus mr-2"></i>Nuevo Contacto
+        </button>
+    </div>
+</div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
